@@ -17,7 +17,7 @@ echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sourc
 # update & upgrade
 echo 'Performing system update'
 apt-get update
-apt-get upgrade
+apt-get upgrade -y
 echo 'Done.'
 
 # install apps from software-repos
@@ -35,7 +35,7 @@ echo 'Done.'
 # Setting up dotefiles
 echo 'Setting up dotfiles'
 for file in tmux.conf; do
-    echo "Creating symlink to $file"
+    echo "... Creating symlink to $file"
     mv ~/.$file ~/.$file.bak.$RANDOM
     ln -bs $(pwd)/$file ~/.$file
 done
@@ -46,7 +46,7 @@ echo 'Done.'
 if [ ! -f ~/.ssh/id_rsa.pub -o ! -f ~/.ssh/id_dsa.pub ]; then 
 # Checks if keys have already been generated
     echo 'Creating SSH keys'
-    ssh-keygen -t rsa -C "poojankhanpara@gmail.com";
+    ssh-keygen -t rsa -C "poojankhanpara@gmail.com" -N '';
 else
     echo "SSH keys already exists!"
 fi
@@ -56,3 +56,4 @@ fi
 echo 'downloading chrome'
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 dpkg -i ./google-chrome-stable_current_amd64.deb
+echo 'Done'
