@@ -1,0 +1,87 @@
+[org/gnome/settings-daemon/plugins/power]
+sleep-inactive-ac-timeout=3600
+sleep-inactive-ac-type='nothing'
+percentage-low=12
+percentage-critical=7
+
+
+[org/gnome/GWeather]
+distance-unit='miles'
+temperature-unit='centigrade'
+
+
+[org/gnome/settings-daemon/plugins/color]
+night-light-enabled=false
+
+
+[org/gnome/settings-daemon/peripherals/keyboard]
+numlock-state='on'
+
+
+[org/gnome/settings-daemon/peripherals/touchscreen]
+orientation-lock=true
+
+
+[org/gnome/shell/extensions/dash-to-dock]
+multi-monitor=true
+click-action='minimize'
+
+
+[org/gnome/gedit/plugins]
+active-plugins=['modelines', 'filebrowser', 'docinfo', 'time', 'spell']
+
+
+[org/gnome/nautilus/preferences]
+default-folder-viewer='icon-view'
+search-filter-time-type='last_modified'
+
+
+[org/gnome/desktop/interface]
+clock-show-date=true
+clock-format='12h'
+gtk-im-module='gtk-im-context-simple'
+
+
+[org/gnome/desktop/media-handling]
+autorun-x-content-start-app=@as []
+autorun-x-content-ignore=@as []
+autorun-x-content-open-folder=@as []
+
+
+[org/gnome/desktop/search-providers]
+sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gnome.Nautilus.desktop']
+
+
+[org/gnome/desktop/calendar]
+show-weekdate=false
+
+
+[org/gnome/desktop/privacy]
+remember-recent-files=false
+
+
+[org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+audible-bell=false
+
+
+[org/gtk/settings/file-chooser]
+sort-column='name'
+clock-format='12h'
+sidebar-width=196
+window-position=(358, 68)
+show-size-column=true
+show-hidden=false
+window-size=(1203, 902)
+sort-directories-first=true
+date-format='regular'
+sort-order='ascending'
+location-mode='path-bar'
+
+
+[org/gtk/settings/color-chooser]
+selected-color=(true, 0.29803921568627451, 0.29803921568627451, 0.29803921568627451, 1.0)
+custom-colors=[(0.29803921568627451, 0.29803921568627451, 0.29803921568627451, 1.0)]
+
+
+[com/ubuntu/sound]
+allow-amplified-volume=false

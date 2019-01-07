@@ -9,21 +9,29 @@ echo 'Done.'
 
 # adding keys
 echo 'adding keys to repo for spotify'
-apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
 echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
 
-#wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - 
+echo 'adding keys for sublime text'
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
 
 # update & upgrade
 echo 'Performing system update'
-apt-get update
-apt-get upgrade -y
+sudo apt-get update -y
+sudo apt-get upgrade -y
 echo 'Done.'
 
 # install apps from software-repos
 echo 'Installing favourite applications'
-apt-get install -y vim ubuntu-restricted-extras git-core gimp git openjdk-7-jdk inkscape nautilus-dropbox geany xclip htop python-pip python-virtualenv spotify-client ttf-mscorefonts-installer tmux vlc browser-plugin-vlc
-echo 'Done.'
+for package in "vim" "curl" "ubuntu-restricted-extras" "git-core" "gimp" "git" "inkscape" \
+ "geany" "xclip" "htop" "python-pip" "python-virtualenv" \
+ "ttf-mscorefonts-installer" "tmux" "vlc" "browser-plugin-vlc"\
+  "network-manager-openvpn-gnome" "sublime-text" "zsh"; do
+    echo "**** installing $package ****"
+    sudo apt-get install -y $package
+done
+# Install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 # Configure git
 echo 'Configuring git'
@@ -31,6 +39,18 @@ git config --global user.name "poojankhanpara"
 git config --global user.email "poojankhanpara@gmail.com"
 git config --global credential.helper cache
 echo 'Done.'
+
+# Install powerline fonts
+sudo pip install git+git://github.com/Lokaltog/powerline
+sudo wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf -O /usr/share/fonts/PowerlineSymbols.otf
+sudo fc-cache -vf /usr/share/fonts/
+sudo wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf -O /etc/fonts/conf.d/10-powerline-symbols.conf
+
+# enable powerline 
+echo ". `pip show powerline-status | grep Location | cut -d ':' -f2`/powerline/bindings/bash/powerline.sh" >> ~/.bashrc
+
+# Install tmux-manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Setting up dotefiles
 echo 'Setting up dotfiles'
@@ -55,5 +75,11 @@ fi
 ####################
 echo 'downloading chrome'
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-dpkg -i ./google-chrome-stable_current_amd64.deb
+sudo dpkg -i ./google-chrome-stable_current_amd64.deb
 echo 'Done'
+
+# Change default shell to zsh
+chsh -s `which zsh` $USER
+
+# load old gsettings
+dconf load / < gsettings.txt
