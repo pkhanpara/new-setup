@@ -17,7 +17,7 @@ wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add
 
 # update & upgrade
 echo 'Performing system update'
-sudo apt-get update
+sudo apt-get update -y
 sudo apt-get upgrade -y
 echo 'Done.'
 
@@ -80,3 +80,6 @@ echo 'Done'
 
 # Change default shell to zsh
 chsh -s `which zsh` $USER
+
+# load old gsettings
+dconf load / < gsettings.txt
