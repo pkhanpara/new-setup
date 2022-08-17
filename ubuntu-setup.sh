@@ -11,7 +11,7 @@ echo 'Installing favourite applications'
 for package in "vim" "curl" "ubuntu-restricted-extras" "git-core" "gimp" "git" "inkscape" \
  "geany" "xclip" "htop" "python-pip" "python-virtualenv" \
  "ttf-mscorefonts-installer" "tmux" "vlc" "browser-plugin-vlc"\
-  "network-manager-openvpn-gnome" "sublime-text" "zsh"; do
+  "network-manager-openvpn-gnome" "sublime-text" "zsh" "blueman"; do
     echo "**** installing $package ****"
     sudo apt-get install -y $package
 done
