@@ -8,9 +8,9 @@ echo 'Done.'
 
 # install apps from software-repos
 echo 'Installing favourite applications'
-for package in "vim" "curl" "ubuntu-restricted-extras" "git-core" "gimp" "git" "inkscape" \
- "geany" "xclip" "htop" "python-pip" "python-virtualenv" \
- "ttf-mscorefonts-installer" "tmux" "vlc" "browser-plugin-vlc"\
+for package in "vim" "curl" "ubuntu-restricted-extras" "git-core" "git" \
+  "xclip" "htop" "python-pip" "python-virtualenv" \
+ "ttf-mscorefonts-installer" "tmux" \
   "network-manager-openvpn-gnome" "sublime-text" "zsh" "blueman"; do
     echo "**** installing $package ****"
     sudo apt-get install -y $package
@@ -58,10 +58,6 @@ fi
 
 ## Install chrome ##
 ####################
-echo 'downloading chrome'
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i ./google-chrome-stable_current_amd64.deb
-echo 'Done'
 
 # Change default shell to zsh
 chsh -s `which zsh` $USER

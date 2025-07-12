@@ -59,6 +59,8 @@ show-weekdate=false
 [org/gnome/desktop/privacy]
 remember-recent-files=false
 
+[org/gnome/desktop/lockdown] 
+disable-lock-screen=true
 
 [org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
 audible-bell=false
